@@ -34,6 +34,15 @@ angular.module('yvyUiApp')
             ' Contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © ' + mapLink,
             maxZoom: 18
           }).addTo(scope.map);
+
+        jQuery.get('paraguay.json', function(data) {
+          console.log(data)
+
+          var topoLayer = new L.TopoJSON();
+          topoLayer.addData(data);
+          topoLayer.addTo(scope.map);
+        });
+
       }
     };
   });
