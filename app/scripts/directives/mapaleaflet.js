@@ -6,7 +6,7 @@
  * # mapaLeaflet
  */
 angular.module('yvyUiApp')
-  .directive('mapaLeaflet', function () {
+  .directive('mapaLeaflet', function (mapaEstablecimientoFactory) {
     return {
       template: '<div id="mapa-leaflet"></div>',
       scope: {
@@ -23,7 +23,7 @@ angular.module('yvyUiApp')
         if(!scope.zoom)
           scope.zoom = 10;
         scope.map = L.map('mapa-leaflet')
-          .setView([scope.lon, scope.lat], scope.zoom);
+          .setView(mapaEstablecimientoFactory.getCentroZoo().features[0].geometry.coordinates, scope.zoom);
         var mapLink =
           '<a href="http://openstreetmap.org">OpenStreetMap</a>';
         L.tileLayer(
@@ -32,6 +32,13 @@ angular.module('yvyUiApp')
             ' Contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © ' + mapLink,
             maxZoom: 18
           }).addTo(scope.map);
+
+          var geojson_data = mapaEstablecimientoFactory.getGeojson();
+
+          /* Agrega los puntos al mapa */
+          geojson_data.then(function(features){
+              L.geoJson(features).addTo(scope.map);
+          });
       }
     };
   });
