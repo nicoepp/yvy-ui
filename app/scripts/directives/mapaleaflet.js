@@ -10,20 +10,18 @@ angular.module('yvyUiApp')
     return {
       template: '<div id="mapa-leaflet"></div>',
       scope: {
-        height: '@',
         lon: '@',
         lat: '@',
         zoom: '@'
       },
       restrict: 'E',
       link: function postLink(scope, element, attrs) {
-        angular.element(document.getElementById('mapa-leaflet')).css('height', scope.height);
         if(!scope.lon)
-          scope.lon = 0.0
+          scope.lon = 0.0;
         if(!scope.lat)
-          scope.lat = 0.0
+          scope.lat = 0.0;
         if(!scope.zoom)
-          scope.zoom = 10
+          scope.zoom = 10;
         scope.map = L.map('mapa-leaflet')
           .setView([scope.lon, scope.lat], scope.zoom);
         var mapLink =

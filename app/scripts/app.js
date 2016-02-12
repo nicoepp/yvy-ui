@@ -33,11 +33,11 @@ angular
         activetab: 'datos'
       })
       .when('/about-us', {
-        template: '<p style="padding: 60px 0">Acerca de nosotros</p>',
+        template: '<div class="container"><p style="padding: 60px 0">Acerca de nosotros</p></div>',
         activetab: 'about'
       })
       .when('/', {
-        template: '<p style="padding: 60px 0">Página principal</p>',
+        template: '<div class="container"><p style="padding: 60px 0">Página principal</p></div>',
         activetab: 'home'
       })
       .otherwise({
