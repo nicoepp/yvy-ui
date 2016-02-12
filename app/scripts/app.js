@@ -22,15 +22,25 @@ angular
   ])
   .config(function ($routeProvider) {
     $routeProvider
-      .when('/', {
+      .when('/mapa', {
         templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
+        controller: 'MainCtrl',
+        activetab: 'mapa'
       })
-      .when('/about', {
+      .when('/datos', {
         templateUrl: 'views/data_list.html',
-        controller: 'DataTableCtrl'
+        controller: 'DataTableCtrl',
+        activetab: 'datos'
+      })
+      .when('/about-us', {
+        template: '<p style="padding: 60px 0">Acerca de nosotros</p>',
+        activetab: 'about'
+      })
+      .when('/', {
+        template: '<p style="padding: 60px 0">Página principal</p>',
+        activetab: 'home'
       })
       .otherwise({
-        redirectTo: '/'
+        redirectTo: '/mapa'
       });
   });

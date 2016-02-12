@@ -10,6 +10,7 @@
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/leaflet/dist/leaflet.css" />
     <!-- endbower -->
+    <link rel="stylesheet" href="bower_components/bootswatch/flatly/bootstrap.css" />
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
@@ -20,16 +21,33 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
+    <!-- nav -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" ng-controller="ActiveTabCtrl">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/"><span class="glyphicon glyphicon-leaf white"></span>&nbsp; Zoológico de Asunción</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-9">
+          <ul class="nav navbar-nav">
+            <li ng-class="{active: route.current.activetab == 'home'}">
+              <a href="/#/"><span class="glyphicon glyphicon-home"></span>&nbsp; Home</a>
+            </li>
+            <li ng-class="{active: route.current.activetab == 'mapa'}">
+              <a href="/#/mapa"><span class="glyphicon glyphicon-globe"></span>&nbsp; Mapa</a>
+            </li>
+            <li ng-class="{active: route.current.activetab == 'datos'}">
+              <a href="/#/datos"><span class="glyphicon glyphicon-list-alt"></span>&nbsp; Datos</a>
+            </li>
+            <li ng-class="{active: route.current.activetab == 'about'}">
+              <a href="/#/about-us"><span class="glyphicon glyphicon-user">&nbsp; About us</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
     <!-- Add your site or application content here -->
     <div class="container">
-      <div class="header">
-        <ul class="nav nav-pills pull-right">
-          <li class="active"><a ng-href="#/">Home</a></li>
-          <li><a ng-href="#/about">About</a></li>
-          <li><a ng-href="#/">Contact</a></li>
-        </ul>
-        <h3 class="text-muted">yvyUi</h3>
-      </div>
 
       <div ng-view=""></div>
       <div class="footer">
@@ -77,6 +95,7 @@
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
+        <script src="scripts/controllers/tabs.js"></script>
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/data_list.js"></script>
         <script src="scripts/directives/mapaleaflet.js"></script>
