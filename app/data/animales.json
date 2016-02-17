@@ -1,0 +1,20 @@
+[
+  {
+    "nombre": "Elefante",
+    "geojson_id": "way/393300039",
+    "descripcion": "Animal Grande (Elefante)",
+    "imagen": "Elefante_Zoo_R.jpg"
+  },
+  {
+    "nombre": "León",
+    "geojson_id": "way/393301913",
+    "descripcion": "Animal Grande (Otro)",
+    "imagen": "Leon_R.jpg"
+  },
+  {
+    "nombre": "Hipopotamo",
+    "geojson_id": "way/393069672",
+    "descripcion": "Animal Grande",
+    "imagen": "Hipotamo_R.jpg"
+  }
+]

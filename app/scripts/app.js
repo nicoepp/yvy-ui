@@ -23,8 +23,7 @@ angular
   .config(function ($routeProvider) {
     $routeProvider
       .when('/mapa', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl',
+        templateUrl: 'views/mapa_zoo_asu.html',
         activetab: 'mapa'
       })
       .when('/datos', {
