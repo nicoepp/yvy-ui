@@ -33,6 +33,7 @@ angular.module('yvyUiApp')
 
         var osm = layers.OPEN_STREET_MAPS.on('load', tilesLoaded);
         var mapQuestOPen  = layers.MAPQUEST.on('load', tilesLoaded);
+        var cartodb  = layers.CARTODB.on('load', tilesLoaded);
 
 
         var map = L.map('map', {maxZoom: MECONF.zoomMax, minZoom: MECONF.zoomMin, worldCopyJump: true, attributionControl: false})
@@ -108,7 +109,7 @@ angular.module('yvyUiApp')
 
         var baseMaps = {
           'Calles OpenStreetMap': osm,
-          'Satelital': mapQuestOPen,
+          'Blanco y Negro': cartodb
         };
 
         map.addLayer(osm);
@@ -458,6 +459,9 @@ angular.module('yvyUiApp')
       */
       MECONF.LAYERS = function () {
         var osm = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {minZoom: 3});
+        var cartodb = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png',{
+          attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'
+        });
         var MapQuestOpen_Aerial = L.tileLayer('http://otile{s}.mqcdn.com/tiles/1.0.0/{type}/{z}/{x}/{y}.{ext}', {
           type: 'sat',
           ext: 'jpg',
@@ -467,6 +471,7 @@ angular.module('yvyUiApp')
         return {
           OPEN_STREET_MAPS: osm,
           MAPQUEST: MapQuestOpen_Aerial,
+          CARTODB: cartodb
         }
       };
 
