@@ -1,3 +1,28 @@
+.referencia {
+  top: 150px;
+  right: 150px;
+  margin: 0 -210px 0 0;
+  position: absolute;
+  width: 290px;
+  z-index: 300;
+}
+
+.referencia .referencia-container {
+  background: url("https://www.itau.com.br/_arquivosestaticos/Itau/defaultTheme/img/bg-search-itens.gif") top left repeat-x #e5e4e3;
+  padding: 10px;
+  width: 220px;
+  text-align: center;
+  border: 1px solid #a8afba;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+  margin-bottom: 10px;
+  position: absolute;
+  text-align: left;
+}
+
+.referencia .referencia-container ul {
+  margin: 0px;
+  padding: 15px;
+}
 
 .browsehappy {
   margin: 0.2em 0;
