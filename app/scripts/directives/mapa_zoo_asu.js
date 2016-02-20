@@ -61,6 +61,8 @@ angular.module('yvyUiApp')
               return false;
             }else if (feature.id.indexOf('node/') != -1 ) {
               return false;
+            }else if (feature.properties['waterway'] == 'stream') {
+              return false;
             }
 
             return true;
