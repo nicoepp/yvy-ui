@@ -93,6 +93,8 @@ angular.module('yvyUiApp')
         */
         function showInfo(e){
 
+          console.log(e);
+
           var foundAnimal = false;
 
           angular.forEach(animalesList, function(animal) {
@@ -280,16 +282,23 @@ angular.module('yvyUiApp')
             case 'water_point':
             return WATER_POINT_FORMAT;
             break;
+            case 'ranger_station':
+            return BUILDING_FORMAT;
             default:
             break;
           }
         }else if (typeof feature.properties['tourism'] != 'undefined') {
           switch (feature.properties['tourism']) {
             case 'attraction':
+            case 'theme_park':
             return CAGES_FORMAT;
             break;
             case 'zoo':
             return ZOO_FORMAT;
+            break;
+            case 'museum':
+            return BUILDING_FORMAT;
+            break;
             default:
             break;
           }
@@ -429,7 +438,7 @@ angular.module('yvyUiApp')
       * Variables para definición de formatos
       */
 
-      var CAGES_FORMAT = {color: '#fff', fillColor: '#6f4e37', weight: 3};
+      var CAGES_FORMAT = {color: '#6f4e37', fillColor: '#6f4e37', weight: 3};
       var REST_AREA_FORMAT = {color: '#f09109', fillColor: '#f09109', weight: 3};
       var PARKING_FORMAT = {color: '#ff0000', fillColor: '#ff0000', weight: 3};
       var TOILETS_FORMAT = {color: '#0b3b0b', fillColor: '#0b3b0b', weight: 3};
