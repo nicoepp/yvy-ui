@@ -8,42 +8,13 @@
  * Controller of the yvyUiApp
  */
 angular.module('yvyUiApp')
-  .controller('DataTableCtrl', function ($scope) {
+  .controller('DataTableCtrl', function ($scope, zooAsuFactory) {
 
-    $scope.animales = [
-      {
-        "nombre": "Elefante",
-        "categoria": "mamífero",
-        "descripcion": "Animal Grande (Elefante)",
-        "origen": "Africa"
-      },
-      {
-        "nombre": "Elefante",
-        "categoria": "mamífero",
-        "descripcion": "Animal Grande",
-        "origen": "Africa"
-      },
-      {
-        "nombre": "Jirafa",
-        "categoria": "mamífero",
-        "descripcion": "Animal Grande",
-        "origen": "Africa"
-      },
-      {
-        "nombre": "Elefante",
-        "categoria": "mamífero",
-        "descripcion": "Animal Grande",
-        "origen": "Africa"
-      },
-      {
-        "nombre": "Rinoceronte",
-        "categoria": "mamífero",
-        "descripcion": "Animal Grande",
-        "origen": "Africa"
-      }
-    ];
+    zooAsuFactory.getAnimales().then(function(animales) {
+        $scope.animales = animales;
+    });
 
-    $scope.pagesize = 4;
+    $scope.pagesize = 10;
     $scope.sortType     = 'nombre'; // set the default sort type
     $scope.sortReverse  = false;    // set the default sort order
     $scope.search = {};

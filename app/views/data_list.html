@@ -21,20 +21,6 @@
                       <span ng-show="sortType == 'nombre' && sortReverse" class="dropup"><span class="caret"></span></span>
                     </th>
                     <th>
-                      <span ng-click="activateSortCol('categoria')">
-                        Categoría
-                      </span>
-                      <span ng-show="sortType == 'categoria' && !sortReverse" class="dropdown"><span class="caret"></span></span>
-                      <span ng-show="sortType == 'categoria' && sortReverse" class="dropup"><span class="caret"></span></span>
-                    </th>
-                    <th>
-                      <span ng-click="activateSortCol('origen')">
-                        Origen
-                      </span>
-                      <span ng-show="sortType == 'origen' && !sortReverse" class="dropdown"><span class="caret"></span></span>
-                      <span ng-show="sortType == 'origen' && sortReverse" class="dropup"><span class="caret"></span></span>
-                    </th>
-                    <th>
                       <span ng-click="activateSortCol('descripcion')">
                         Descripción
                       </span>
@@ -44,16 +30,12 @@
                 </tr>
                 <tr class="filters">
                     <th><input type="text" ng-model="search.nombre" class="form-control" placeholder="Nombre"></th>
-                    <th><input type="text" ng-model="search.categoria" class="form-control" placeholder="Categoría"></th>
-                    <th><input type="text" ng-model="search.origen" class="form-control" placeholder="Origen"></th>
                     <th><input type="text" ng-model="search.descripcion" class="form-control" placeholder="Descripción"></th>
                 </tr>
             </thead>
             <tbody>
                 <tr dir-paginate="item in animales | filter: search | orderBy: sortType: sortReverse | itemsPerPage: pagesize">
                     <td>{{ item.nombre }}</td>
-                    <td>{{ item.categoria }}</td>
-                    <td>{{ item.origen }}</td>
                     <td>{{ item.descripcion }}</td>
                 </tr>
             </tbody>
