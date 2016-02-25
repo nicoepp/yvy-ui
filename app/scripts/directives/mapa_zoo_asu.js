@@ -93,8 +93,6 @@ angular.module('yvyUiApp')
         */
         function showInfo(e){
 
-          console.log(e);
-
           var foundAnimal = false;
 
           angular.forEach(animalesList, function(animal) {

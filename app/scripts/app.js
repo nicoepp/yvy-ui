@@ -33,7 +33,7 @@ angular
       })
       .when('/about-us', {
         templateUrl: 'views/about-us.html',
-        activetab: 'about-us'
+        activetab: 'about'
       })
       .when('/', {
         templateUrl: 'views/main.html',
