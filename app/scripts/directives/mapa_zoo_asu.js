@@ -105,6 +105,8 @@ angular.module('yvyUiApp')
 
           if(foundAnimal)
             $('#descripcion-modal').modal('show');
+
+          console.log('La unidad cliqueada tiene el identificador: ' + e.target.feature.id);
         }
 
         var baseMaps = {
