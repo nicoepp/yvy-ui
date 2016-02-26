@@ -31,7 +31,7 @@ angular.module('yvyUiApp')
                 if (poi_hash.hasOwnProperty(poi_type)) {
                     if (poi_type === poi_selected) {
                         poi_hash[poi_type] = !poi_hash[poi_type];
-                    }else{
+                    } else {
                         poi_hash[poi_type] = false;
                     }
                 }

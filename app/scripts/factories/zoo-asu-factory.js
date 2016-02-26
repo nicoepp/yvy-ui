@@ -40,6 +40,12 @@ angular.module('yvyUiApp')
                     return response.data
                 });
             },
+
+            getAnimalesList: function () {
+                return $http.get('data/animals_list.json').then(function (response) {
+                    return response.data
+                });
+            },
             /**
              * Filtra el mapa según los criterios recibidos como parámetro
              * @para allFeatures Objeto con todos los features del mapa
@@ -101,5 +107,6 @@ angular.module('yvyUiApp')
                 $rootScope.$broadcast('mapa.filtrado', geoJsonFeatureCollection);
 
             }
+
         };
     });
