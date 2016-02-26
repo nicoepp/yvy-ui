@@ -102,7 +102,7 @@ angular.module('yvyUiApp')
                      */
                     function showInfo(e) {
 
-                        console.log(e);
+                        /* console.log(e); /* JUST FOR DEBUG */
 
                         var foundAnimal = false;
 
@@ -141,26 +141,71 @@ angular.module('yvyUiApp')
                     var icon;
                     var markerColor;
 
-                    switch (feature.properties['amenity']) {
-                        case 'bench':
-                            markerColor = 'pink';
-                            icon = 'screenshot';
-                            break;
+                    if (feature.properties.hasOwnProperty('amenity')) {
+                        switch (feature.properties['amenity']) {
+                            case 'bench':
+                                markerColor = 'darkpurple';
+                                icon = 'download';
+                                break;
 
-                        case 'waste_basket':
-                            markerColor = 'black';
-                            icon = 'trash';
-                            break;
+                            case 'waste_basket':
+                                markerColor = 'black';
+                                icon = 'trash';
+                                break;
 
-                        case 'drinking_water':
-                            markerColor = 'blue';
-                            icon = 'tint';
-                            break;
+                            case 'drinking_water':
+                                markerColor = 'blue';
+                                icon = 'tint';
+                                break;
 
-                        default:
-                            markerColor = 'orange';
-                            icon = 'home';
-                            break;
+                            case 'toilets':
+                                markerColor = 'darkgreen';
+                                icon = 'asterisk';
+                                break;
+
+                            case 'parking':
+                                markerColor = 'red';
+                                icon = 'unchecked';
+                                break;
+
+                            case 'ranger_station':
+                                markerColor = 'darkred';
+                                icon = 'info-sign';
+                                break;
+
+                            default:
+                                markerColor = 'orange';
+                                icon = 'home';
+                                break;
+                        }
+                    }
+
+                    if (feature.properties.hasOwnProperty('highway')) {
+                        switch (feature.properties['highway']) {
+                            case 'rest_area':
+                                markerColor = 'orange';
+                                icon = 'tree-deciduous';
+                                break;
+
+                            default:
+                                markerColor = 'orange';
+                                icon = 'home';
+                                break;
+                        }
+                    }
+
+                    if (feature.properties.hasOwnProperty('tourism')) {
+                        switch (feature.properties['tourism']) {
+                            case 'museum':
+                                markerColor = 'blue';
+                                icon = 'tower';
+                                break;
+
+                            default:
+                                markerColor = 'darkred';
+                                icon = 'info-sign';
+                                break;
+                        }
                     }
 
                     return L.AwesomeMarkers.icon({
@@ -255,13 +300,8 @@ angular.module('yvyUiApp')
                          * y por alguna razón cuando el marker recibe el valor lo
                          * espera conforme a la notación LatLong, contrario a lo que
                          * sucede cuando se carga el mapa.
-                         *
-                         * Se crea la variable temporal, porque la función espera un objeto
-                         * del tipo latlng no las coordenadas solamente
                          */
-                        var temp = lnglat.lat;
-                        lnglat.lat = lnglat.lng;
-                        lnglat.lng = temp;
+                        lnglat = invertirCoordenadas(lnglat);
 
                         L.marker(lnglat, {
                             icon: L.divIcon({
@@ -494,13 +534,37 @@ angular.module('yvyUiApp')
                 draw_markers();
 
                 /**
+                 * Invierte coordenaas LongLat a LatLong
+                 * Esta función es útil para operar con features de un GeoJson
+                 * @param lnglat Son las coordenadas que vienen de un GeoJson
+                 */
+                function invertirCoordenadas(lnglat) {
+                    var temp = lnglat.lat;
+                    lnglat.lat = lnglat.lng;
+                    lnglat.lng = temp;
+                    return lnglat;
+                }
+
+                /**
                  * Evento mapa.filtrado
                  * Al invocarse Genera un Layer con los puntos que recibe como parámetro
                  * y añade el Layer al mapa.
                  * Si ya existiese un layer, este se elimina antes de agregar el segundo
                  */
-                scope.$on('mapa.filtrado', function (event, param) {
-                    var filteredGeoJsonLayer = L.geoJson(param, {
+                scope.$on('mapa.filtrado', function (event, featureCollection) {
+                    // el objeto param FeatureCollection
+                    featureCollection.features = _.map(featureCollection.features, function (feature) {
+                        if (feature.geometry.type == 'Polygon') {
+                            var tempPolygon = L.polygon(feature.geometry.coordinates);
+                            var coordinates = invertirCoordenadas(tempPolygon.getBounds().getCenter());
+                            feature.geometry.type = 'Point';
+                            feature.geometry.coordinates = [coordinates['lng'], coordinates['lat']];
+                        }
+
+                        return feature;
+                    });
+
+                    var filteredGeoJsonLayer = L.geoJson(featureCollection, {
                         pointToLayer: function (feature, latLng) {
                             return L.marker(latLng, {icon: get_custom_marker(feature)});
                         }
