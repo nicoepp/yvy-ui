@@ -10,11 +10,11 @@
 angular.module('yvyUiApp')
   .controller('DataTableCtrl', function ($scope, zooAsuFactory) {
 
-    zooAsuFactory.getAnimales().then(function(animales) {
+    zooAsuFactory.getAnimalesList().then(function(animales) {
         $scope.animales = animales;
     });
 
-    $scope.pagesize = 10;
+    $scope.pagesize = 15 ;
     $scope.sortType     = 'nombre'; // set the default sort type
     $scope.sortReverse  = false;    // set the default sort order
     $scope.search = {};

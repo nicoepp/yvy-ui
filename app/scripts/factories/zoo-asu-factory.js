@@ -38,6 +38,12 @@ angular.module('yvyUiApp')
                 return $http.get('data/animales.json').then(function (response) {
                     return response.data
                 });
+            },
+
+            getAnimalesList: function() {
+              return $http.get('data/animals_list.json').then(function (response) {
+                  return response.data
+              });
             }
         };
     });
