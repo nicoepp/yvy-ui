@@ -13,14 +13,14 @@
         <table class="table animales-table">
             <thead>
                 <tr class="headers">
-                    <th>
+                    <th width="20%">
                       <span ng-click="activateSortCol('nombre')">
                         Nombre
                       </span>
                       <span ng-show="sortType == 'nombre' && !sortReverse" class="dropdown"><span class="caret"></span></span>
                       <span ng-show="sortType == 'nombre' && sortReverse" class="dropup"><span class="caret"></span></span>
                     </th>
-                    <th>
+                    <th width="50%">
                       <span ng-click="activateSortCol('descripcion')">
                         Descripción
                       </span>
@@ -52,4 +52,9 @@
     </div>
     <dir-pagination-controls class="pull-right" style=""></dir-pagination-controls>
 </div> <!-- end row -->
+  <div class="row">
+    <div class="link-tabla" style="margin-bottom: 30px">
+      <a href="/data/animals_list.json" download="lista_de_animales.json">Descargar lista de animales</a>
+    </div>
+  </div>
 </div> <!-- end container -->
