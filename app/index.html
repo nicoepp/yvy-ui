@@ -9,6 +9,7 @@
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="bower_components/Leaflet.awesome-markers/dist/leaflet.awesome-markers.css" />
     <!-- endbower -->
     <link rel="stylesheet" href="bower_components/bootswatch/flatly/bootstrap.css" />
     <!-- endbuild -->
@@ -98,16 +99,18 @@
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/lodash/lodash.js"></script>
     <script src="bower_components/leaflet/dist/leaflet-src.js"></script>
+    <script src="bower_components/Leaflet.awesome-markers/dist/leaflet.awesome-markers.js"></script>
     <script src="bower_components/angularUtils-pagination/dirPagination.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
-        <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/tabs.js"></script>
-        <script src="scripts/controllers/data_list.js"></script>
-        <script src="scripts/factories/zoo-asu-factory.js"></script>
-        <script src="scripts/directives/mapa_zoo_asu.js"></script>
-        <!-- endbuild -->
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/tabs.js"></script>
+    <script src="scripts/controllers/data_list.js"></script>
+    <script src="scripts/controllers/filterCtrl.js"></script>
+    <script src="scripts/factories/zoo-asu-factory.js"></script>
+    <script src="scripts/directives/mapa_zoo_asu.js"></script>
+    <!-- endbuild -->
 </body>
 </html>

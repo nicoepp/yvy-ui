@@ -1,14 +1,23 @@
-# yvy-ui
+# zoo-asuncion
 
-[![Join the chat at https://gitter.im/nemesiscodex/yvy-ui](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/nemesiscodex/yvy-ui?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+Muestra en un mapa el zoológico de Asunción detallando las jaulas, estacionamiento, areas de descanso y demas sectores que se puedan encontrar en el zoológico
+
+Esta aplicación se basa en [yvy-ui](https://github.com/CEAMSO/yvy-ui)
 
 Mapa base.
 
 Creado utilizando el Angular generator de Yeoman: https://github.com/yeoman/generator-angular
 
-## Instalación
+## Dependencias
 
-  1. git clone https://github.com/nemesiscodex/yvy-ui.git
+  1. git
+  2. nodejs
+  3. npm
+  4. [Compass](https://rubygems.org/gems/compass/)
+
+## Desarrollo
+
+  1. git clone https://github.com/nicoepp/zoo-asuncion.git
   2. cd yvy-ui
   3. npm install
   4. bower install
@@ -20,3 +29,9 @@ Creado utilizando el Angular generator de Yeoman: https://github.com/yeoman/gene
 ```bash
 bower install --save [dependencia]
 ```
+
+## Datos
+
+Fueron obtenidos mapeando el zoológico y subiendo los datos a [OpenStreetMaps](https://www.openstreetmap.org/#map=15/-25.2497/-57.5668)
+
+Se exportaron a [GeoJson](http://geojson.org/) utilizando [Overpass Turbo](http://overpass-turbo.eu/)
